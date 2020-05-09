@@ -30,6 +30,9 @@
     <!--banner-->
     <!-- 统计图 -->
     <iv-section title="数据统计" type="line"></iv-section>
+    <view class="table">
+      <iv-table :tableData="tableData" :title="title" align="center" titleBg="#eee"></iv-table>
+    </view>
     <!-- 统计图结束 -->
     <!-- 菜单盒子 -->
     <iv-section title="工作台" type="line"></iv-section>
@@ -58,10 +61,11 @@
 
 <script>
 import ivSection from "@/components/uni-section/uni-section.vue";
+import ivTable from '@/components/table/portrait_table.vue'
 import ivGrid from "@/components/grid/uni-grid";
 import ivGridItem from "@/components/grid-item/uni-grid-item";
 export default {
-  components: { ivGrid, ivGridItem, ivSection },
+  components: { ivGrid, ivGridItem, ivSection,ivTable },
   data() {
     return {
       imgUrl: "",
@@ -94,6 +98,52 @@ export default {
           text: "数据看板",
         },
       ],
+      //表头
+      title:[
+        {
+					label: '类型',
+					value: 'name'
+				},
+        {
+					label: '当前使用数量',
+					value: 'current'
+        },
+         {
+					label: '累计使用数量',
+					value: 'cumulative'
+        },
+         {
+					label: '剩余优惠数量',
+					value: 'surplus'
+				},
+      ],
+      // table数据展示
+      tableData:[
+        {
+					name:'简单案例',
+					current:'2',
+					cumulative:18,
+					surplus:'22'
+        },
+        {
+					name:'中等案例',
+					current:'3',
+					cumulative:18,
+					surplus:'22'
+        },
+        {
+					name:'复杂案例',
+					current:'4',
+					cumulative:18,
+					surplus:'33'
+        },
+        {
+					name:'正6',
+					current:'11',
+					cumulative:18,
+					surplus:'33'
+				},
+      ]
     };
   },
   onLoad() {},
@@ -173,7 +223,9 @@ export default {
   transform: scaleY(0.9);
   transform-origin: center center;
 }
-
+.table{
+  padding-top: 3px;
+}
 /* 九宫格 */
 .example-menu {
   flex-direction: row;
