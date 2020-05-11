@@ -50,6 +50,14 @@
 				"backgroundColor": "#F3F3F3"
 			}
 		},{
+			"path": "pages/index/detailsClinic",
+			"style": {
+				"navigationBarTitleText": "诊所详情",
+				"navigationBarBackgroundColor": "#2ea8ab",
+				"navigationBarTextStyle": "white",
+				"backgroundColor": "#F3F3F3"
+			}
+		},{
 			"path": "pages/personalInfor/index",
 			"style": {
 				"navigationBarTitleText": "我的",

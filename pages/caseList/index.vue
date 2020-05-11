@@ -34,32 +34,111 @@
       itemWidth="50%"
     ></iv-tabs>
     <!-- 诊所列表 -->
-    <view style="padding-top:100px">
-      <mescroll-body
-        ref="mescrollRef"
-        @init="mescrollInit"
-        :down="downOption"
-        @down="downCallback"
-        @up="upCallback"
+    <view v-if="currentTab === 0" style="margin-top: 33px;">
+      <view
+        v-for="(item, index) in dataList"
+        :key="index"
+        hover-class="hover"
+        :hover-stay-time="150"
+        class="list-box"
       >
-        <view class="news-li" v-for="news in dataList" :key="news.id">
-          <view>{{ news.title }}</view>
-          <view class="new-content">{{ news.content }}</view>
+        <view class="list-item">
+
+          <view class="item-box">
+            <view class="fl fl_item_box">
+              <!-- 患者姓名/案例号 -->
+              <view class="item-title">
+                <view class="item-one-flr">
+                  <span class="">{{ item.PatientName }}</span>
+                </view>
+                <view class="item-tow-time">
+                  <span class="fl">{{ item.CaseCode }}</span
+                  >&nbsp;
+                </view>
+          
+              </view>
+                <!-- 诊所名称 -->
+              <view class="fl fr_item_box">
+                <span class="fr start_item">
+                  {{ item.clinicName }}
+                </span>
+              </view>
+                <!-- 类型 -->
+               <view class="fl fr_item_type">
+                <span class="fr start_item">
+                  {{ item.type }}
+                </span>
+              </view>
+              <!-- 操作 -->
+                <view class="fl fr_item_type">
+                 <button v-if="item.operation==1" class="xj-btn xj-btn-small xj-green" hover-class="tui-primary-hover">通过</button>
+                  <view v-if="item.operation==2" class="fr start_item">
+                  已通过
+                </view>
+              </view>
+            </view>
+          </view>
         </view>
-      </mescroll-body>
-    
+      </view>
+    </view>
+    <view v-if="currentTab === 1" style="margin-top: 33px;">
+      <view
+        v-for="(item, index) in repairList"
+        :key="index"
+        hover-class="hover"
+        :hover-stay-time="150"
+        class="list-box"
+      >
+           <view class="list-item">
+
+          <view class="item-box">
+            <view class="fl fl_item_box">
+              <!-- 患者姓名/案例号 -->
+              <view class="item-title">
+                <view class="item-one-flr">
+                  <span class="">{{ item.PatientName }}</span>
+                </view>
+                <view class="item-tow-time">
+                  <span class="fl">{{ item.CaseCode }}</span
+                  >&nbsp;
+                </view>
+          
+              </view>
+                <!-- 诊所名称 -->
+              <view class="fl fr_item_box">
+                <span class="fr start_item">
+                  {{ item.clinicName }}
+                </span>
+              </view>
+                <!-- 类型 -->
+               <view class="fl fr_item_type">
+                <span class="fr start_item">
+                  {{ item.type }}
+                </span>
+              </view>
+              <!-- 操作 -->
+                <view class="fl fr_item_type">
+                 <button v-if="item.operation==1" class="xj-btn xj-btn-small xj-green" hover-class="tui-primary-hover">通过</button>
+                  <view v-if="item.operation==2" class="fr start_item">
+                  已通过
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+      </view>
     </view>
   </view>
 </template>
 <script>
 import ivTabs from "@/components/tui-tabs/tui-tabs";
-import MescrollMixin from "@/components/mescroll-uni/mescroll-mixins.js";
-import {apiNewList} from "@/api/mock.js"
+	import ivButton from "@/components/button/button";
+
 export default {
   components: {
-    ivTabs,
+    ivTabs,ivButton
   },
-		mixins: [MescrollMixin], // 使用mixin (在main.js注册全局组件)
   data() {
     return {
       //  tab参数
@@ -72,15 +151,84 @@ export default {
           name: "修复种植",
         },
       ],
-      downOption: {
-					auto: false //是否在初始化后,自动执行downCallback; 默认true
-				},
-        // dataList: [],
-        dataList:[
-          {
-
-          }
-        ]
+      // 正畸案例
+      dataList: [{
+        CaseCode:"AL12345622",
+        PatientName:"方黑豆",
+        clinicName:'孝感市开发区杨志勇口腔',
+        type:"正畸简单案例",
+        operation:1
+      },
+      {
+        CaseCode:"AL12345623",
+        PatientName:"方黑花",
+        clinicName:'孝感市开发区杨志勇口腔',
+        type:"正6",
+        operation:2
+      },{
+        CaseCode:"AL12345624",
+        PatientName:"方黑呀",
+        clinicName:'孝感市开发区杨志勇口腔',
+        type:"正畸简单案例",
+        operation:1
+      },{
+        CaseCode:"AL12345625",
+        PatientName:"方黑丫",
+        clinicName:'孝感市开发区杨志勇口腔',
+        type:"正畸复杂案例",
+        operation:2
+      },{
+        CaseCode:"AL12345626",
+        PatientName:"张蓝莓",
+        clinicName:'孝感市开发区杨志勇口腔',
+        type:"正畸简单案例",
+        operation:1
+      },{
+        CaseCode:"AL12345627",
+        PatientName:"方二月",
+        clinicName:'孝感市开发区杨志勇口腔',
+        type:"正畸简单案例",
+        operation:2
+      }],
+      // 修复案例
+      repairList:[{
+        CaseCode:"AL12345622",
+        PatientName:"方黑豆",
+        clinicName:'孝感市开发区杨志勇口腔',
+        type:"修复",
+        operation:1
+      },
+      {
+        CaseCode:"AL12345623",
+        PatientName:"方黑花",
+        clinicName:'孝感市开发区杨志勇口腔',
+        type:"种植",
+        operation:2
+      },{
+        CaseCode:"AL12345624",
+        PatientName:"方黑呀",
+        clinicName:'孝感市开发区杨志勇口腔',
+        type:"修复",
+        operation:1
+      },{
+        CaseCode:"AL12345625",
+        PatientName:"方黑丫",
+        clinicName:'孝感市开发区杨志勇口腔',
+        type:"种植",
+        operation:2
+      },{
+        CaseCode:"AL12345626",
+        PatientName:"张蓝莓",
+        clinicName:'孝感市开发区杨志勇口腔',
+        type:"修复",
+        operation:1
+      },{
+        CaseCode:"AL12345627",
+        PatientName:"方二月",
+        clinicName:'孝感市开发区杨志勇口腔',
+        type:"种植",
+        operation:2
+      }]
     };
   },
   methods: {
@@ -90,45 +238,6 @@ export default {
     },
     //    搜索
     searchTap() {},
-    	/*下拉刷新的回调 */
-			downCallback() {
-				//联网加载数据
-				apiNewList().then(data => {
-					//联网成功的回调,隐藏下拉刷新的状态
-					this.mescroll.endSuccess();
-					//设置列表数据
-					this.dataList.unshift(data[0]);
-				}).catch(()=>{
-					//联网失败的回调,隐藏下拉刷新的状态
-					this.mescroll.endErr();
-				})
-			},
-			/*上拉加载的回调: 其中page.num:当前页 从1开始, page.size:每页数据条数,默认10 */
-			upCallback(page) {
-				//联网加载数据
-				apiNewList(page.num, page.size).then(curPageData=>{
-					//联网成功的回调,隐藏下拉刷新和上拉加载的状态;
-					//mescroll会根据传的参数,自动判断列表如果无任何数据,则提示空;列表无下一页数据,则提示无更多数据;
-					
-					//方法一(推荐): 后台接口有返回列表的总页数 totalPage
-					//this.mescroll.endByPage(curPageData.length, totalPage); //必传参数(当前页的数据个数, 总页数)
-					
-					//方法二(推荐): 后台接口有返回列表的总数据量 totalSize
-					//this.mescroll.endBySize(curPageData.length, totalSize); //必传参数(当前页的数据个数, 总数据量)
-					
-					//方法三(推荐): 您有其他方式知道是否有下一页 hasNext
-					//this.mescroll.endSuccess(curPageData.length, hasNext); //必传参数(当前页的数据个数, 是否有下一页true/false)
-					
-					//方法四 (不推荐),会存在一个小问题:比如列表共有20条数据,每页加载10条,共2页.如果只根据当前页的数据个数判断,则需翻到第三页才会知道无更多数据.
-					this.mescroll.endSuccess(curPageData.length);
-					
-					//设置列表数据
-					this.dataList=this.dataList.concat(curPageData);
-				}).catch(()=>{
-					//联网失败, 结束加载
-					this.mescroll.endErr();
-				})
-			}
   },
 };
 </script>
@@ -180,23 +289,66 @@ export default {
 }
 
 /* 列表 */
-	/*说明*/
-	.notice{
-		font-size: 30upx;
-		padding: 40upx 0;
-		border-bottom: 1upx solid #eee;
-		text-align: center;
-	}
-	/*展示上拉加载的数据列表*/
-	.news-li{
-		font-size: 32upx;
-		padding: 32upx;
-		border-bottom: 1upx solid #eee;
-	}
-	.news-li .new-content{
-		font-size: 28upx;
-		margin-top: 10upx;
-		margin-left: 20upx;
-		color: #666;
-	}
+.list-box {
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+  margin-top: 2px;
+}
+.list-item {
+  padding: 30upx 30upx;
+  display: flex;
+  align-items: item;
+  margin-bottom: 5px;
+}
+
+
+.item-box {
+  flex: 1;
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.item-title {
+  font-size: 32upx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  float: left;
+  text-align: center;
+  width: 150upx;
+
+}
+.item-tow-time {
+  color: #616e6e;
+ font-size: 12px;
+  margin-top: 5px;
+  height: 15px;
+
+}
+.start_item {
+  display: block;
+color: #616e6e;
+font-size: 13px;
+width: 100%;
+}
+.fl_item_box{
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+}
+.fr_item_box{
+  width: 200upx;
+  padding: 0 10px;
+text-align: center;
+
+}
+.fr_item_type{
+   width:165rpx;
+  padding: 0 10px;
+text-align: center;
+}
 </style>

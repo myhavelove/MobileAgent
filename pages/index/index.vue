@@ -188,6 +188,9 @@ export default {
 </script>
 
 <style>
+page{
+  background: #fff;
+}
 /*banner*/
 
 .fl {
@@ -225,6 +228,7 @@ export default {
 }
 .table{
   padding-top: 3px;
+  background: #fff;
 }
 /* 九宫格 */
 .example-menu {
