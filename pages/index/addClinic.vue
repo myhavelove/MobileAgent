@@ -7,6 +7,7 @@
           v-model="form.loginNumber"
           class="uni-input-input"
           name="input"
+          disabled
         />
       </view>
       <view class="cu-form-group margin-top">

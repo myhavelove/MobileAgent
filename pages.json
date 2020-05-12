@@ -65,6 +65,23 @@
 				"navigationBarTextStyle": "white",
 				"backgroundColor": "#F3F3F3"
 			}
+		},{
+			"path": "pages/personalInfor/infor",
+			"style": {
+				"navigationBarTitleText": "个人信息",
+				"navigationBarBackgroundColor": "#2ea8ab",
+				"navigationBarTextStyle": "white",
+				"backgroundColor": "#F3F3F3"
+			}
+		}
+		,{
+			"path": "pages/personalInfor/modify",
+			"style": {
+				"navigationBarTitleText": "密码修改",
+				"navigationBarBackgroundColor": "#2ea8ab",
+				"navigationBarTextStyle": "white",
+				"backgroundColor": "#F3F3F3"
+			}
 		}
 		
 		

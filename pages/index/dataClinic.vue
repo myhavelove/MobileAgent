@@ -109,6 +109,9 @@ export default {
 };
 </script>
 <style  scoped>
+page{
+  background: #fff;
+}
 .table_list{
     padding: 5px;
 }

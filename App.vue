@@ -54,7 +54,7 @@
     line-height: 30px;
 	} 
 	.xj-green{
-		background: #19be6b !important;
+		background: #2ea8ab !important;
     color: #fff;
 	}
 	

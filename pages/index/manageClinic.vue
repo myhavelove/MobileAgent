@@ -56,7 +56,7 @@
                 </span>
               </view>
               <!-- 操作 -->
-                <view class="fl fr_item_type">
+                <view class="fr fr_item_type">
                  <button v-if="item.operation==1" class="xj-btn xj-btn-small xj-green" hover-class="tui-primary-hover">开通</button>
                   <button v-if="item.operation==2" class="xj-btn xj-btn-small xj-green" hover-class="tui-primary-hover">暂停</button>
 
@@ -184,7 +184,7 @@ export default {
 
 .item-box {
   flex: 1;
-  width: 70%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -219,7 +219,7 @@ text-align: center;
 
 }
 .fr_item_type{
-   width:20%;
+   width:23%;
   padding: 0 10px;
 text-align: center;
 }
